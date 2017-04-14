@@ -13,4 +13,4 @@ You search by name, email, by full name or few letters, lowerCase or upper... Ev
 If there is no match you'll find a displayed message, I had a css rule
 If you click search button without any word in it you'll display the ten first student...
 
-Hope things works for you
+Enjoy
