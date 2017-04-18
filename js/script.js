@@ -124,17 +124,12 @@ function findStudent(array, value){
     }
 }
 
-// Display the search filed in the dom
-$studentSearchForm += '<input placeholder="Search for students..." />';
-$studentSearchForm += '<button>Search</button></div>';
-$('.page-header').append($studentSearchForm);
-
 /* To work more easily with the datas I created an array of object
  * with the student datas. And then use this array in the findStudent function explained above.
  * 
  */
-$('.page-header').on('click', 'button', function(e){
-    let valueSearch = $('.student-search input');
+function displaySearchResult(){
+	let valueSearch = $('.student-search input');
     let arrayStudentObject = [];
     $.each($totalStudent, function(index, value){
         let $img = $(value).find('.avatar').attr("src");
@@ -147,7 +142,26 @@ $('.page-header').on('click', 'button', function(e){
     
     findStudent(arrayStudentObject, valueSearch.val());
     valueSearch.val("");
+}
+
+// Display the search filed in the dom
+$studentSearchForm += '<input class="js-search-input" placeholder="Search for students..." />';
+$studentSearchForm += '<button>Search</button></div>';
+$('.page-header').append($studentSearchForm);
+
+
+// Display result on click button
+$('.page-header').on('click', 'button', function(e){
+    displaySearchResult()
 });
+
+//Extra bonus display result on keyPress enter
+$('.js-search-input').on('keypress', function(e){
+	if(e.keyCode === 13){
+		displaySearchResult();
+	}
+})
+
 
 
 
